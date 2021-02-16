@@ -26,15 +26,13 @@ jobs:
       - name: npm install
         if: env.QCZJ_GetUserInfoHEADER
         run: |
-          cd ~/Qczjxh
           npm install
       - name: '运行 【汽车之家极速版】'
         if: env.QCZJ_GetUserInfoHEADER
         run: |
-          cd ~/Qczjxh
           node Task/qczjspeed.js
         env:
-          
+          QCZJ_GetUserInfoHEADER: ${{ secrets.QCZJ_GetUserInfoHEADER }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}

@@ -1,9 +1,9 @@
-name: 京东疯狂JOY挂机
+name: qczj
 
 on:
     workflow_dispatch:
     schedule:
-        - cron: "0 18 * * *"
+        - cron: "*/30 * * * *"
     watch:
         types: [started]
     repository_dispatch:
@@ -23,7 +23,7 @@ jobs:
             - name: 安装依赖包
               run: |
                   npm install
-            - name: "运行【京东疯狂JOY挂机】"
+            - name: "运行【qczj】"
               run: |
                   node qczj.js
               env:

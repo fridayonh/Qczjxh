@@ -6,6 +6,8 @@ on:
      - cron: '*/30 * * * *'
   watch:
     types: started
+  repository_dispatch:
+        types: qczj
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,8 +20,8 @@ jobs:
         with:
                node-version: "12.x"
       - name: 安装依赖包
-            run:|
-                npm install
+         run:|
+           npm install
       - name: '运行 【汽车之家极速版】'
         run: |
           node qczj.js

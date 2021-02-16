@@ -30,7 +30,7 @@ jobs:
       - name: '运行 【汽车之家极速版】'
         if: env.QCZJ_GetUserInfoHEADER
         run: |
-          node Task/qczj.js
+          node qczj.js
         env:
           QCZJ_GetUserInfoHEADER: ${{ secrets.QCZJ_GetUserInfoHEADER }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}

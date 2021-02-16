@@ -10,29 +10,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
-    env:
-        QCZJ_GetUserInfoHEADER: ${{ secrets.QCZJ_GetUserInfoHEADER }}
-        QCZJ_taskBODY: ${{ secrets.QCZJ_taskBODY }}		
-        QCZJ_activityBODY: ${{ secrets.QCZJ_activityBODY }}	
-        QCZJ_addCoinBODY: ${{ secrets.QCZJ_addCoinBODY }}
-        QCZJ_addCoin2BODY: ${{ secrets.QCZJ_addCoin2BODY }}
-        QCZJ_CASH: ${{ secrets.QCZJ_CASH }}
-        QCZJ_CASHTIME: ${{ secrets.QCZJ_CASHTIME }}
     steps:
-      - name: Use Node.js 12.x
+      - name: 拉取代码
+        uses: actions/checkout@v2
+      - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
-      - name: npm install
-        if: env.QCZJ_GetUserInfoHEADER
-        run: |
-          npm install
+               node-version: "12.x"
+      - name: 安装依赖包
+            run:|
+                npm install
       - name: '运行 【汽车之家极速版】'
-        if: env.QCZJ_GetUserInfoHEADER
         run: |
           node qczj.js
         env:
           QCZJ_GetUserInfoHEADER: ${{ secrets.QCZJ_GetUserInfoHEADER }}
+          QCZJ_taskBODY: ${{ secrets.QCZJ_taskBODY }}		
+          QCZJ_activityBODY: ${{ secrets.QCZJ_activityBODY }}	
+          QCZJ_addCoinBODY: ${{ secrets.QCZJ_addCoinBODY }}
+          QCZJ_addCoin2BODY: ${{ secrets.QCZJ_addCoin2BODY }}
+          QCZJ_CASH: ${{ secrets.QCZJ_CASH }}
+          QCZJ_CASHTIME: ${{ secrets.QCZJ_CASHTIME }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
